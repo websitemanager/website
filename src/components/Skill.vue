@@ -6,7 +6,10 @@
       </header>
       <div class="card-content">
         <div class="content">
-          abcd
+          <div class="skill-item" v-for="item in items" :key="item.id">
+            <h4 class="title">{{ item.name }}</h4>
+            <b-progress type="is-info" :value="item.value" class="subtitle"></b-progress>
+          </div>
         </div>
       </div>
     </div>
@@ -19,11 +22,6 @@ export default {
   props: {
     name: String,
     items: Array,
-  },
-  data() {
-    return {
-      skillItems: [],
-    };
   },
 };
 </script>
