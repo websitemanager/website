@@ -4,8 +4,7 @@
       <div class="container">
         <div class="columns is-vcentered">
           <div class="column is-one-third">
-            <h5 class="subtitle">This is me</h5>
-            <h2 class="title">Travor James</h2>
+            <h1 class="title is-1">Travor James</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis, mauris
             non elementum commodo, lacus felis imperdiet mauris, varius tempor nibh ex at mauris.
             Proin facilisis tellus ut nisi commodo, et sagittis.</p>
@@ -24,3 +23,12 @@ export default {
   name: 'Hero',
 };
 </script>
+
+<style lang="scss" scoped>
+.header {
+  background-image: url('../assets/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>
