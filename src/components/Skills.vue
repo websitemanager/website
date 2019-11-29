@@ -1,6 +1,7 @@
 <template>
   <section class="skills section is-medium">
     <div class="container">
+      <h3 class="title is-3 has-text-centered">Skills</h3>
       <div class="columns is-multiline">
         <Skill v-for="skill in skills" :name="skill.name" :items="skill.items" :key="skill.id" />
       </div>
@@ -23,47 +24,47 @@ export default {
           id: 1,
           name: 'Continuous Integration Tools',
           items: [
-            { name: 'Travis CI', value: 50 },
-            { name: 'Jenkins', value: 30 },
-            { name: 'Circle CI', value: 50 },
-            { name: 'Gitlab CI', value: 60 },
+            { name: 'Travis CI', value: 5 },
+            { name: 'Jenkins', value: 3 },
+            { name: 'Circle CI', value: 5 },
+            { name: 'Gitlab CI', value: 6 },
           ],
         },
         {
           id: 2,
           name: 'Databases',
           items: [
-            { name: 'MySQL', value: 80 },
-            { name: 'SQLite', value: 40 },
+            { name: 'MySQL', value: 8 },
+            { name: 'SQLite', value: 4 },
           ],
         },
         {
           id: 3,
           name: 'Frameworks and Other Technologies',
           items: [
-            { name: 'Drupal', value: 90 },
-            { name: 'AngularJS', value: 60 },
-            { name: 'Wordpress', value: 30 },
-            { name: 'jQuery', value: 80 },
+            { name: 'Drupal', value: 9 },
+            { name: 'AngularJS', value: 6 },
+            { name: 'Wordpress', value: 3 },
+            { name: 'jQuery', value: 8 },
           ],
         },
         {
           id: 4,
           name: 'Operating Systems',
           items: [
-            { name: 'Windows', value: 70 },
-            { name: 'MacOS/OS X', value: 80 },
-            { name: 'Linux', value: 80 },
+            { name: 'Windows', value: 7 },
+            { name: 'MacOS/OS X', value: 8 },
+            { name: 'Linux', value: 8 },
           ],
         },
         {
           id: 5,
           name: 'Scripting Languages',
           items: [
-            { name: 'PHP', value: 80 },
-            { name: 'Ruby', value: 40 },
-            { name: 'Bash', value: 60 },
-            { name: 'Javascript', value: 70 },
+            { name: 'PHP', value: 8 },
+            { name: 'Ruby', value: 4 },
+            { name: 'Bash', value: 6 },
+            { name: 'Javascript', value: 7 },
           ],
         },
       ],
@@ -71,3 +72,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+section.skills {
+  background-color: #dfdfff;
+}
+</style>

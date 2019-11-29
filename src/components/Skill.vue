@@ -2,13 +2,14 @@
   <div class="column is-one-third">
     <div class="card">
       <header class="card-header">
-        <h3 class="title card-header-title">{{ name }}</h3>
+        <p class="card-header-title">{{ name }}</p>
       </header>
       <div class="card-content">
         <div class="content">
           <div class="skill-item" v-for="item in items" :key="item.id">
-            <h4 class="title">{{ item.name }}</h4>
-            <b-progress type="is-info" :value="item.value" class="subtitle"></b-progress>
+            <p>{{ item.name }}</p>
+            <b-progress type="is-info" :value="item.value * 10" show-value>{{
+              item.value }} out of 10</b-progress>
           </div>
         </div>
       </div>
