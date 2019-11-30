@@ -28,7 +28,7 @@ export default {
 @import '~bulma/sass/utilities/mixins';
 
 .header {
-  background-image: url('../assets/banner.jpg');
+  background-image: url('../assets/banner.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

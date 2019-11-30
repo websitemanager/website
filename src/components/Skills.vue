@@ -75,6 +75,6 @@ export default {
 
 <style lang="scss" scoped>
 section.skills {
-  background-color: #dfdfff;
+  background-color: #eef8fb;
 }
 </style>
