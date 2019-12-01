@@ -14,10 +14,11 @@
           </div>
         </div>
         <div class="column is-5 is-offset-1">
-          <div v-for="skill in skills" :key="skill.id" class="skills">
-            <h6 class="title is-6">{{ skill.name }}</h6>
-            <b-progress type="is-success" :value="skill.value * 10"></b-progress>
-            <b-taglist>
+          <div v-for="skill in skills" :key="skill.id" class="skill">
+            <h6 class="skill-name title is-6">{{ skill.name }}</h6>
+            <b-progress type="is-success" :value="skill.value * 10"
+                        class="skill-value"></b-progress>
+            <b-taglist class="skill-items">
               <b-tag type="is-info" v-for="item in skill.items" :key="item.id">
                 {{ item.name }}
               </b-tag>
@@ -40,11 +41,21 @@ export default {
       skills: [],
     };
   },
-  async mounted() {
+  mounted() {
     const base = new Airtable({
       endpointUrl: 'https://api.airtable.com',
       apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
     }).base(process.env.VUE_APP_AIRTABLE_BASE);
+
+    const getItem = async (id) => {
+      const table = base('Items');
+      const item = await api.getRecord(table, id);
+
+      return {
+        id: item.id,
+        name: item.Name,
+      };
+    };
 
     const getSkills = async () => {
       const table = base('Skills');
@@ -60,42 +71,40 @@ export default {
       ));
     };
 
-    const getItem = async (id) => {
-      const table = base('Items');
-      const item = await api.getRecord(table, id);
+    const getSkillItems = async () => {
+      const skills = await getSkills();
 
-      return {
-        id: item.id,
-        name: item.Name,
-      };
+      skills.map(async (skill) => {
+        const skillItem = {
+          id: skill.id,
+          name: skill.name,
+          value: skill.value,
+          items: [],
+        };
+
+        await skill.items.reduce(async (prev, item) => {
+          await prev;
+          const i = await getItem(item);
+          skillItem.items.push(i);
+        }, Promise.resolve());
+
+        this.skills.push(skillItem);
+      });
     };
 
-    getSkills()
-      .then((records) => {
-        const skills = [];
-
-        records.forEach((record) => {
-          const skill = {
-            id: record.id,
-            value: record.value,
-            name: record.name,
-            items: [],
-          };
-
-          record.items.forEach(async (id) => {
-            const item = await getItem(id);
-
-            skill.items.push({
-              id: item.id,
-              name: item.name,
-            });
-          });
-
-          skills.push(skill);
-        });
-
-        this.skills = skills;
-      });
+    getSkillItems();
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.skill {
+  .skill-name, .skill-value {
+    margin-bottom: 0.5rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}
+</style>
