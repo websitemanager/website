@@ -10,7 +10,7 @@
       <template slot="end">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/about' }">About</b-navbar-item>
-        <b-navbar-item href="#">Skills</b-navbar-item>
+        <b-navbar-item href="#">Blog</b-navbar-item>
         <b-navbar-item href="#">Portfolio</b-navbar-item>
         <b-navbar-item href="#">Contact</b-navbar-item>
       </template>

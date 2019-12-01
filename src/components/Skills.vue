@@ -1,16 +1,24 @@
 <template>
-  <section class="skills section is-medium">
-    <div class="container">
-      <h3 class="title is-3 has-text-centered">Skills</h3>
-      <div class="columns is-multiline">
-        <Skill v-for="skill in skills" :name="skill.name" :items="skill.items" :key="skill.id" />
-      </div>
-    </div>
-  </section>
+  <div>abcd</div>
 </template>
 
 <script>
+import api from '@/services/api';
 import Skill from '@/components/Skill.vue';
+
+api.base('Skills').select({
+  // Selecting the first 3 records in Grid view:
+  maxRecords: 3,
+  view: 'Grid view',
+}).eachPage(
+  (records, fetchNextPage) => {
+    records.forEach((record) => {
+      console.log('Retrieved', record.get('Name'));
+    });
+
+    fetchNextPage();
+  },
+);
 
 export default {
   name: 'Skills',
