@@ -40,7 +40,7 @@ export default {
     const base = new Airtable({
       endpointUrl: 'https://api.airtable.com',
       apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
-    }).base(process.env.VUE_APP_AIRTABLE_BASE);
+    }).base(process.env.VUE_APP_AIRTABLE_SKILLS_BASE);
 
     const getItem = async (id) => {
       const table = base('Items');
