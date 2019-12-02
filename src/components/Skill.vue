@@ -49,6 +49,7 @@ export default {
       return {
         id: item.id,
         name: item.Name,
+        link: item.Link,
       };
     };
 
@@ -91,7 +92,7 @@ export default {
   }
 
   .loading {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
 
     .half-circle-spinner {
       margin: 0 auto;
