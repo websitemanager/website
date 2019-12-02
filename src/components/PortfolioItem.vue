@@ -5,9 +5,10 @@
     </div>
 
     <div v-if="!loading">
-      <div class="card">
+      <router-link :to="{ name: 'portfolioItemDetail', params: { id: item.id } }" class="card
+                        is-block">
         <div class="card-image">
-          <figure class="image is-4by3">
+          <figure class="image is-16by9">
             <img :src="item.thumbnail" alt="item.name">
           </figure>
         </div>
@@ -15,7 +16,7 @@
           <h5 class="title is-5">{{ item.name }}</h5>
           <div class="content" v-html="item.description" />
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
