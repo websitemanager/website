@@ -12,7 +12,12 @@
               </figure>
             </div>
             <div class="column is-half">
-              abcd
+              <h3 class="title is-3">{{ item.name }}</h3>
+              <div class="content" v-html="item.description"></div>
+              <div class="content" v-html="item.contributions"></div>
+              <b-button type="is-link" tag="a" :href="item.link" target="_blank">
+                Visit site
+              </b-button>
             </div>
           </div>
         </div>
