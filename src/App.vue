@@ -32,8 +32,11 @@
             </div>
           </div>
           <div class="column">
+            <h6 class="title is-6 has-text-light has-text-weight-bold">Follow me</h6>
             <div class="content">
-              <p>abcd</p>
+              <a href="https://gitlab.com/virtualcursor" class="has-text-light">
+                <b-icon pack="fab" icon="gitlab"></b-icon>
+              </a>
             </div>
           </div>
         </div>
