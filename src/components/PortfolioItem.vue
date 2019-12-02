@@ -12,13 +12,8 @@
           </figure>
         </div>
         <div class="card-content">
-          <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-            <a href="#">#css</a> <a href="#">#responsive</a>
-            <br>
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-          </div>
+          <h5 class="title is-5">{{ item.name }}</h5>
+          <div class="content" v-html="item.description" />
         </div>
       </div>
     </div>
@@ -61,6 +56,7 @@ export default {
         name: item.Name,
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
+        description: item.Description,
       };
     };
 
