@@ -92,7 +92,7 @@ export default {
   }
 
   .loading {
-    padding: 2rem 0;
+    padding: 3rem 0;
 
     .half-circle-spinner {
       margin: 0 auto;
