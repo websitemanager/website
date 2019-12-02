@@ -1,9 +1,19 @@
 import Vue from 'vue';
 import Buefy from 'buefy';
-import App from './App.vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import router from './router';
+import App from './App.vue';
 
-Vue.use(Buefy);
+library.add(faExternalLinkAlt);
+
+Vue.component('vue-fontawesome', FontAwesomeIcon);
+
+Vue.use(Buefy, {
+  defaultIconComponent: 'vue-fontawesome',
+  defaultIconPack: 'fas',
+});
 
 Vue.config.productionTip = false;
 

@@ -13,9 +13,12 @@
             </div>
             <div class="column is-half">
               <h3 class="title is-3">{{ item.name }}</h3>
+              <h5 class="description title is-5">Description</h5>
               <div class="content" v-html="item.description"></div>
+              <h5 class="contributions title is-5">Contributions</h5>
               <div class="content" v-html="item.contributions"></div>
-              <b-button size="is-medium" type="is-link" tag="a" :href="item.link" target="_blank">
+              <b-button icon-left="external-link-alt"
+                        type="is-success" tag="a" :href="item.link" target="_blank">
                 Visit site
               </b-button>
             </div>
@@ -68,3 +71,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.portfolio-detail {
+  .description, .contributions {
+    margin-bottom: 0.5rem;
+  }
+}
+</style>
