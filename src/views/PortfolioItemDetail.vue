@@ -1,5 +1,16 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="portfolio-item">
+    <PortfolioDetail :id="$route.params.id" />
   </div>
 </template>
+
+<script>
+import PortfolioDetail from '@/components/PortfolioDetail.vue';
+
+export default {
+  name: 'home',
+  components: {
+    PortfolioDetail,
+  },
+};
+</script>

@@ -13,7 +13,7 @@ import About from '@/components/About.vue';
 import Portfolio from '@/components/Portfolio.vue';
 
 export default {
-  jame: 'home',
+  name: 'home',
   components: {
     Hero,
     About,
