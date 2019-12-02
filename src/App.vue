@@ -33,11 +33,16 @@
           </div>
           <div class="column">
             <h6 class="title is-6 has-text-light has-text-weight-bold">Follow me</h6>
-            <div class="content">
-              <a href="https://gitlab.com/virtualcursor" class="has-text-light">
-                <b-icon pack="fab" icon="gitlab"></b-icon>
-              </a>
-            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a href="https://gitlab.com/virtualcursor" class="has-text-light level-item">
+                  <b-icon pack="fab" icon="gitlab"></b-icon>
+                </a>
+                <a href="#" class="has-text-light level-item">
+                  <b-icon pack="fab" icon="instagram"></b-icon>
+                </a>
+              </div>
+            </nav>
           </div>
         </div>
       </div>
