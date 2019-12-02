@@ -14,16 +14,7 @@
           </div>
         </div>
         <div class="column is-5 is-offset-1">
-          <div v-for="skill in skills" :key="skill.id" class="skill">
-            <h6 class="skill-name title is-6">{{ skill.name }}</h6>
-            <b-progress type="is-success" :value="skill.value * 10"
-                        class="skill-value"></b-progress>
-            <b-taglist class="skill-items">
-              <b-tag type="is-info" v-for="item in skill.items" :key="item.id">
-                {{ item.name }}
-              </b-tag>
-            </b-taglist>
-          </div>
+          <Skill :skill="skill" v-for="skill in skills" :key="skill.id" class="skill" />
         </div>
       </div>
     </div>
@@ -33,9 +24,13 @@
 <script>
 import Airtable from 'airtable';
 import api from '@/services/api';
+import Skill from '@/components/Skill.vue';
 
 export default {
   name: 'About',
+  components: {
+    Skill,
+  },
   data() {
     return {
       skills: [],
@@ -74,7 +69,8 @@ export default {
     const getSkillItems = async () => {
       const skills = await getSkills();
 
-      skills.map(async (skill) => {
+      // eslint-disable-next-line
+      for (const skill of skills) {
         const skillItem = {
           id: skill.id,
           name: skill.name,
@@ -82,29 +78,18 @@ export default {
           items: [],
         };
 
-        await skill.items.reduce(async (prev, item) => {
-          await prev;
+        // eslint-disable-next-line
+        for (const item of skill.items) {
+          // eslint-disable-next-line
           const i = await getItem(item);
           skillItem.items.push(i);
-        }, Promise.resolve());
+        }
 
         this.skills.push(skillItem);
-      });
+      }
     };
 
     getSkillItems();
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.skill {
-  .skill-name, .skill-value {
-    margin-bottom: 0.5rem;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 1.5rem;
-  }
-}
-</style>
