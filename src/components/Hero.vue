@@ -25,7 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~bulma/sass/utilities/mixins';
-@import "~bulmaswatch/cerulean/variables";
 
 .header {
   background: #eef8fb;
