@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="column is-5 is-offset-1">
-          <Skill :skill="skill" v-for="skill in skills" :key="skill.id" class="skill" />
+          <Skill v-for="skill in skills" :key="skill.id" :id="skill.id" class="skill" />
         </div>
       </div>
     </div>
@@ -36,60 +36,20 @@ export default {
       skills: [],
     };
   },
-  mounted() {
+  async mounted() {
     const base = new Airtable({
       endpointUrl: 'https://api.airtable.com',
       apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
     }).base(process.env.VUE_APP_AIRTABLE_BASE);
 
-    const getItem = async (id) => {
-      const table = base('Items');
-      const item = await api.getRecord(table, id);
-
-      return {
-        id: item.id,
-        name: item.Name,
-      };
-    };
-
     const getSkills = async () => {
       const table = base('Skills');
       const records = await api.getRecords(table);
 
-      return records.map(record => (
-        {
-          id: record.getId(),
-          name: record.get('Name'),
-          value: record.get('Value'),
-          items: record.get('Items'),
-        }
-      ));
+      return records.map(record => ({ id: record.getId() }));
     };
 
-    const getSkillItems = async () => {
-      const skills = await getSkills();
-
-      // eslint-disable-next-line
-      for (const skill of skills) {
-        const skillItem = {
-          id: skill.id,
-          name: skill.name,
-          value: skill.value,
-          items: [],
-        };
-
-        // eslint-disable-next-line
-        for (const item of skill.items) {
-          // eslint-disable-next-line
-          const i = await getItem(item);
-          skillItem.items.push(i);
-        }
-
-        this.skills.push(skillItem);
-      }
-    };
-
-    getSkillItems();
+    this.skills = await getSkills();
   },
 };
 </script>

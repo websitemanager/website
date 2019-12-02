@@ -12,10 +12,57 @@
 </template>
 
 <script>
+import Airtable from 'airtable';
+import api from '@/services/api';
+
 export default {
   name: 'Skill',
   props: {
-    skill: Object,
+    id: String,
+  },
+  data() {
+    return {
+      skill: {},
+    };
+  },
+  async mounted() {
+    const base = new Airtable({
+      endpointUrl: 'https://api.airtable.com',
+      apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
+    }).base(process.env.VUE_APP_AIRTABLE_BASE);
+
+    const getItem = async (id) => {
+      const table = base('Items');
+      const item = await api.getRecord(table, id);
+
+      return {
+        id: item.id,
+        name: item.Name,
+      };
+    };
+
+    const getSkillItems = async (id) => {
+      const table = base('Skills');
+      const record = await api.getRecord(table, id);
+
+      const skillItems = [];
+
+      // eslint-disable-next-line
+      for (const item of record.Items) {
+        // eslint-disable-next-line
+        const i = await getItem(item);
+        skillItems.push(i);
+      }
+
+      return {
+        id: record.id,
+        name: record.Name,
+        value: record.Value,
+        items: skillItems,
+      };
+    };
+
+    this.skill = await getSkillItems(this.id);
   },
 };
 </script>
