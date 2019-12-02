@@ -4,13 +4,13 @@
                              has-text-weight-bold">
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          Website
+          Strict Panda
         </b-navbar-item>
       </template>
       <template slot="end">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/about' }">About</b-navbar-item>
-        <b-navbar-item href="#">Blog</b-navbar-item>
+        <b-navbar-item href="#">About</b-navbar-item>
+        <b-navbar-item href="https://blog.strict-panda.com">Blog</b-navbar-item>
         <b-navbar-item href="#">Portfolio</b-navbar-item>
         <b-navbar-item href="#">Contact</b-navbar-item>
       </template>

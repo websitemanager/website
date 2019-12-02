@@ -4,10 +4,9 @@
       <div class="container">
         <div class="columns is-vcentered">
           <div class="website-name column is-one-third">
-            <h1 class="title is-1">Travor James</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis, mauris
-            non elementum commodo, lacus felis imperdiet mauris, varius tempor nibh ex at mauris.
-            Proin facilisis tellus ut nisi commodo, et sagittis.</p>
+            <h1 class="title is-1">Strict Panda</h1>
+            <p>Doing web development as a profession and have built projects ranging from university
+            websites up to e-commerce.</p>
           </div>
           <div class="website-image column is-two-thirds has-text-centered">
             <img src="@/assets/productivity.png" />
