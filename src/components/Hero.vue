@@ -2,11 +2,11 @@
   <section class="header hero">
     <div class="hero-body">
       <div class="container">
-        <div class="columns is-vcentered">
+        <div class="columns">
           <div class="website-name column is-one-third">
             <h1 class="title is-1">Strict Panda</h1>
-            <p>Doing web development as a profession and have built projects ranging from university
-            websites up to e-commerce.</p>
+            <h3 class="subtitle is-3">Doing web development as a profession for more than 8 years
+              building projects ranging from university websites to e-commerce.</h3>
           </div>
           <div class="website-image column is-two-thirds has-text-centered">
             <img src="@/assets/productivity.png" />
@@ -25,12 +25,19 @@ export default {
 
 <style lang="scss" scoped>
 @import '~bulma/sass/utilities/mixins';
+@import "~bulmaswatch/cerulean/variables";
 
 .header {
-  background-image: url('../assets/banner.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #eef8fb;
+}
+
+@include tablet {
+  .header {
+    background-image: url('../assets/banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 @include mobile {
