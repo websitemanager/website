@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="column is-5 is-offset-1">
-          <Skill v-for="skill in skills" :key="skill.id" :id="skill.id" class="skill" />
+          <Skill v-for="skill in skills" :key="skill.id" :id="skill.id" />
         </div>
       </div>
     </div>

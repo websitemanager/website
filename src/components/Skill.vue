@@ -1,18 +1,25 @@
 <template>
   <div class="skill">
-    <h6 class="skill-name title is-6">{{ skill.name }}</h6>
-    <b-progress type="is-success" :value="skill.value * 10"
-                class="skill-value"></b-progress>
-    <b-taglist class="skill-items">
-      <b-tag type="is-info" v-for="item in skill.items" :key="item.id">
-        <a :href="item.link">{{ item.name }}</a>
-      </b-tag>
-    </b-taglist>
+    <div v-if="loading" class="loading">
+      <half-circle-spinner :animation-duration="1000" :size="30" color="#73A839" />
+    </div>
+
+    <div v-if="!loading">
+      <h6 class="skill-name title is-6">{{ skill.name }}</h6>
+      <b-progress type="is-success" :value="skill.value * 10"
+                  class="skill-value"></b-progress>
+      <b-taglist class="skill-items">
+        <b-tag type="is-info" v-for="item in skill.items" :key="item.id">
+          <a :href="item.link">{{ item.name }}</a>
+        </b-tag>
+      </b-taglist>
+    </div>
   </div>
 </template>
 
 <script>
 import Airtable from 'airtable';
+import { HalfCircleSpinner } from 'epic-spinners';
 import api from '@/services/api';
 
 export default {
@@ -20,9 +27,13 @@ export default {
   props: {
     id: String,
   },
+  components: {
+    HalfCircleSpinner,
+  },
   data() {
     return {
       skill: {},
+      loading: true,
     };
   },
   async mounted() {
@@ -54,6 +65,8 @@ export default {
         skillItems.push(i);
       }
 
+      this.loading = false;
+
       return {
         id: record.id,
         name: record.Name,
@@ -75,6 +88,14 @@ export default {
 
   &:not(:last-child) {
     margin-bottom: 1.5rem;
+  }
+
+  .loading {
+    padding: 1.5rem 0;
+
+    .half-circle-spinner {
+      margin: 0 auto;
+    }
   }
 }
 </style>
