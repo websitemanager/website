@@ -17,7 +17,9 @@ Vue.use(Buefy, {
   defaultIconPack: 'fas',
 });
 
-Vue.use(VueScrollTo);
+// 3.25 is the 'min-height' of the navbar set for Bulma.
+const calculatedOffset = 3.25 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+Vue.use(VueScrollTo, { offset: -calculatedOffset });
 
 Vue.config.productionTip = false;
 

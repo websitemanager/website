@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <b-navbar wrapper-class="container" transparent fixed-top shadow class="is-uppercase is-size-7
-                             has-text-weight-bold">
+    <b-navbar wrapper-class="container" transparent fixed-top shadow class="is-uppercase is-size-7">
       <template slot="brand">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        <b-navbar-item tag="router-link" class="has-text-weight-bold" :to="{ path: '/' }">
           Strict Panda
         </b-navbar-item>
       </template>
