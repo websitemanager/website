@@ -13,6 +13,8 @@
           a little bit of <strong>devops</strong>.</p>
             <p>I am able to build websites from ground up and also do support for existing
             websites.</p>
+            <p>I also sometimes write <strong>tech stuffs</strong> on my
+            <a href="https://blog.strict-panda.com">blog</a>.</p>.
           </div>
         </div>
         <div class="column is-5 is-offset-1">

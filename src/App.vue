@@ -22,17 +22,20 @@
       <div class="container">
         <div class="columns">
           <div class="column">
+            <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">About</h6>
             <div class="content">
-              <p>abcd</p>
+              <p>Copyright &copy; Strict Panda {{ year }}</p>
             </div>
           </div>
           <div class="column">
+            <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">Contact</h6>
             <div class="content">
-              <p>abcd</p>
+              <p>Contact me at <a class="has-text-primary has-text-weight-bold"
+                                  :href="'mailto:' + email">{{ email }}</a>.</p>
             </div>
           </div>
           <div class="column">
-            <h6 class="title is-6 has-text-light has-text-weight-bold">Follow me</h6>
+            <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">Follow me</h6>
             <nav class="level is-mobile">
               <div class="level-left">
                 <a href="https://gitlab.com/virtualcursor" class="has-text-light level-item">
@@ -49,6 +52,18 @@
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      email: 'me@strict-panda.com',
+      year: new Date().getFullYear(),
+    };
+  },
+};
+</script>
 
 <style lang="scss">
   // @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700&display=swap');
