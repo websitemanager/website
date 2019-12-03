@@ -2,8 +2,8 @@
   <section class="section portfolio has-background-white-bis">
     <div class="container">
       <h2 class="title is-2 has-text-centered">Portfolio</h2>
-      <h4 class="subtitle is-4 has-text-centered">A collection of websites I was lucky enough to
-        contribute to.</h4>
+      <h4 class="subtitle is-4 has-text-centered">A collection of some of the websites I was lucky
+        enough to contribute to.</h4>
       <div class="columns collection is-multiline">
         <PortfolioItem v-for="item in portfolioItems" :key="item.id" :id="item.id" class="item
                               is-one-third column" />
