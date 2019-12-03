@@ -16,7 +16,7 @@
 
             <b-field label="Email">
               <b-input type="email" required
-                       placeholder="e.g. alexsmith@@gmail.com" name="_replyto"></b-input>
+                       placeholder="e.g. alexsmith@gmail.com" name="_replyto"></b-input>
             </b-field>
 
             <b-field label="Message">
