@@ -5,14 +5,13 @@
         <div class="column is-6">
           <h3 class="title is-3">About Me</h3>
           <div class="content">
-            <p>I am a web developer from the <strong>Philippines</strong> using <strong>PHP</strong>
-            and <strong>Javascript</strong> for development.</p>
+            <p>I am a web developer from the <strong>Philippines</strong>. I am somewhat fluent with
+            <strong>PHP</strong> and <strong>Javascript</strong>.</p>
             <p>I mainly use <strong>Drupal</strong> for developing websites but have experience with
             other technologies not limiting to <strong>PHP</strong>. I mostly do <strong>backend
-            development</strong> but also comfortable with <strong>frontend development</strong> and
-          a little bit of <strong>devops</strong>.</p>
-            <p>I am able to build websites from ground up and also do support for existing
-            websites.</p>
+            development</strong> but I am also comfortable with <strong>frontend
+          development</strong> and a little bit of <strong>devops</strong>.</p>
+            <p>I build websites from ground up and also do support for existing websites.</p>
             <p>I also sometimes write <strong>tech stuffs</strong> on my
             <a href="https://blog.strict-panda.com">blog</a>.</p>.
           </div>
