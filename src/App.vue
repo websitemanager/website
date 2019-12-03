@@ -24,7 +24,11 @@
           <div class="column">
             <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">About</h6>
             <div class="content">
-              <p>Copyright &copy; Strict Panda {{ year }}</p>
+              <p>Web developer with background of <span class="has-text-weight-bold">PHP</span> and
+              <span class="has-text-weight-bold">Javascript</span>.</p>
+              <p>Copyright &copy; Strict Panda {{ year }}.
+              Images from <a href="https://www.freepik.com/home"
+                             class="has-text-primary" target="_blank">Freepik</a>.</p>
             </div>
           </div>
           <div class="column">
