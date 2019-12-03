@@ -101,7 +101,7 @@ footer.footer .column.about {
       width: 1em;
       height: 1em;
       display: inline-block;
-      margin-right: 2px;
+      margin-right: 4px;
     }
 
     &.vuejs::before {

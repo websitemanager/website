@@ -5,7 +5,7 @@
     </div>
 
     <router-link v-if="!loading" :to="{ name: 'portfolioItemDetail', params: { id: item.id } }"
-                 class="card is-block">
+                 class="card is-block has-background-white">
       <div class="card-image">
         <figure class="image is-16by9">
           <img :src="item.thumbnail" :alt="item.name" :title="item.name">
