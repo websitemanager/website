@@ -12,6 +12,9 @@
             development</strong> but I am also comfortable with <strong>frontend
           development</strong> and a little bit of <strong>devops</strong>.</p>
             <p>I build websites from ground up and also do support for existing websites.</p>
+            <p>My role mostly involves <strong>migration</strong>, <strong>consuming third-party
+              APIs</strong>, <strong>developing custom modules in Drupal</strong>,
+            <strong>developing custom themes in Drupal</strong>, and <strong>site building</strong>.
             <p>I also occasionally write <strong>tech stuffs</strong> on my
             <a href="https://blog.strict-panda.com">blog</a>.</p>
           </div>
