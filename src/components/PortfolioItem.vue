@@ -56,7 +56,7 @@ export default {
         name: item.Name,
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
-        description: item.Description ? marked(item.Description, { sanitize: true }) : '',
+        description: item.Description ? marked(item.Description, { smartypants: true }) : '',
       };
     };
 

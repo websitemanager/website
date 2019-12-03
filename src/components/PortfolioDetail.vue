@@ -72,8 +72,8 @@ export default {
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
         image: item.Image[0].url,
-        description: item.Description ? marked(item.Description, { sanitize: true }) : '',
-        contributions: item.Contributions ? marked(item.Contributions, { sanitize: true }) : '',
+        description: item.Description ? marked(item.Description, { smartypants: true }) : '',
+        contributions: item.Contributions ? marked(item.Contributions, { smartypants: true }) : '',
       };
     };
 
