@@ -13,10 +13,10 @@
             </div>
             <div class="column is-half">
               <h3 class="title is-3">{{ item.name }}</h3>
-              <h5 class="description title is-5">Description</h5>
-              <div class="content" v-html="item.description"></div>
-              <h5 class="contributions title is-5">Contributions</h5>
-              <div class="content" v-html="item.contributions"></div>
+              <h5 v-if="item.description" class="description title is-5">Description</h5>
+              <div v-if="item.description" class="content" v-html="item.description"></div>
+              <h5 v-if="item.contributions" class="contributions title is-5">Contributions</h5>
+              <div v-if="item.contributions" class="content" v-html="item.contributions"></div>
               <b-button icon-left="external-link-alt"
                         type="is-success" tag="a" :href="item.link" target="_blank">
                 Visit site
@@ -63,8 +63,8 @@ export default {
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
         image: item.Image[0].url,
-        description: marked(item.Description, { sanitize: true }),
-        contributions: marked(item.Contributions, { sanitize: true }),
+        description: item.Description ? marked(item.Description, { sanitize: true }) : '',
+        contributions: item.Contributions ? marked(item.Contributions, { sanitize: true }) : '',
       };
     };
 

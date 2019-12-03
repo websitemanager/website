@@ -13,7 +13,7 @@
       </div>
       <div class="card-content">
         <h5 class="title is-5">{{ item.name }}</h5>
-        <div class="content" v-html="item.description" />
+        <div class="content" v-if="item.description" v-html="item.description" />
       </div>
     </router-link>
   </div>
@@ -56,7 +56,7 @@ export default {
         name: item.Name,
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
-        description: marked(item.Description, { sanitize: true }),
+        description: item.Description ? marked(item.Description, { sanitize: true }) : '',
       };
     };
 
