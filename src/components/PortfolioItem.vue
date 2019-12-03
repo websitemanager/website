@@ -4,20 +4,18 @@
       <half-circle-spinner :animation-duration="1000" :size="30" color="#73A839" />
     </div>
 
-    <div v-if="!loading">
-      <router-link :to="{ name: 'portfolioItemDetail', params: { id: item.id } }" class="card
-                        is-block">
-        <div class="card-image">
-          <figure class="image is-16by9">
-            <img :src="item.thumbnail" alt="item.name">
-          </figure>
-        </div>
-        <div class="card-content">
-          <h5 class="title is-5">{{ item.name }}</h5>
-          <div class="content" v-html="item.description" />
-        </div>
-      </router-link>
-    </div>
+    <router-link v-if="!loading" :to="{ name: 'portfolioItemDetail', params: { id: item.id } }"
+                 class="card is-block">
+      <div class="card-image">
+        <figure class="image is-16by9">
+          <img :src="item.thumbnail" alt="item.name">
+        </figure>
+      </div>
+      <div class="card-content">
+        <h5 class="title is-5">{{ item.name }}</h5>
+        <div class="content" v-html="item.description" />
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -67,6 +65,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card {
+  height: 100%;
+}
+
 .item {
   .loading {
     padding: 5rem 0;
