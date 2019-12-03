@@ -77,7 +77,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Open Sans:400,700&display=swap');
+
 @import "~bulmaswatch/cerulean/variables";
+
+$family-sans-serif: 'Roboto', sans-serif;
+$body-size: 18px;
+$title-family: 'Open Sans', sans-serif;
 
 @import "~bulma/sass/utilities/_all";
 @import "~bulma";
