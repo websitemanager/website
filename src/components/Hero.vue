@@ -5,8 +5,8 @@
         <div class="columns">
           <div class="website-name column is-one-third">
             <h1 class="title is-1">Strict Panda</h1>
-            <h3 class="subtitle is-3">Doing web development as a profession building websites
-              ranging from universities to e-commerce.</h3>
+            <h3 class="subtitle is-3">Doing web development as a profession and hobby building
+              websites ranging from universities to e-commerce.</h3>
           </div>
           <div class="website-image column is-two-thirds has-text-centered">
             <img src="@/assets/productivity.png" />

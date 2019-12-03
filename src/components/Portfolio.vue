@@ -1,5 +1,5 @@
 <template>
-  <section class="section portfolio has-background-light">
+  <section class="section portfolio has-background-white-bis">
     <div class="container">
       <h2 class="title is-2 has-text-centered">Portfolio</h2>
       <h4 class="subtitle is-4 has-text-centered">A collection of websites I was lucky enough to

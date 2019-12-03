@@ -4,6 +4,7 @@
     <Hero />
     <About />
     <Portfolio />
+    <Contact />
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
 import Portfolio from '@/components/Portfolio.vue';
+import Contact from '@/components/Contact.vue';
 
 export default {
   name: 'home',
@@ -18,6 +20,7 @@ export default {
     Hero,
     About,
     Portfolio,
+    Contact,
   },
 };
 </script>
