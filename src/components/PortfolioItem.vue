@@ -8,7 +8,7 @@
                  class="card is-block">
       <div class="card-image">
         <figure class="image is-16by9">
-          <img :src="item.thumbnail" alt="item.name">
+          <img :src="item.thumbnail" :alt="item.name" :title="item.name">
         </figure>
       </div>
       <div class="card-content">

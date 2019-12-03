@@ -7,9 +7,11 @@
         <div class="container">
           <div class="columns">
             <div class="column is-half">
-              <figure class="image is-16by9">
-                <img :src="item.image" alt="item.name">
-              </figure>
+              <a class="is-block" @click="isImageModalActive = true">
+                <figure class="image is-16by9">
+                  <img :src="item.image" :alt="item.name" :title="item.name">
+                </figure>
+              </a>
             </div>
             <div class="column is-half">
               <h3 class="title is-3">{{ item.name }}</h3>
@@ -26,6 +28,12 @@
         </div>
       </div>
     </div>
+
+    <b-modal :active.sync="isImageModalActive">
+      <figure class="image is-16by9">
+        <img :src="item.image" :alt="item.name" />
+      </figure>
+    </b-modal>
   </section>
 </template>
 
@@ -43,6 +51,7 @@ export default {
     return {
       loading: true,
       item: {},
+      isImageModalActive: false,
     };
   },
   async mounted() {
