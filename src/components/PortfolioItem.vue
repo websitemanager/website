@@ -21,6 +21,7 @@
 
 <script>
 import Airtable from 'airtable';
+import marked from 'marked';
 import { HalfCircleSpinner } from 'epic-spinners';
 import api from '@/services/api';
 
@@ -55,7 +56,7 @@ export default {
         name: item.Name,
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
-        description: item.Description,
+        description: marked(item.Description, { sanitize: true }),
       };
     };
 

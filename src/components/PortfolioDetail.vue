@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import marked from 'marked';
 import Airtable from 'airtable';
 import api from '@/services/api';
 
@@ -62,8 +63,8 @@ export default {
         link: item.Link,
         thumbnail: item.Thumbnail[0].url,
         image: item.Image[0].url,
-        description: item.Description,
-        contributions: item.Contributions,
+        description: marked(item.Description, { sanitize: true }),
+        contributions: marked(item.Contributions, { sanitize: true }),
       };
     };
 
