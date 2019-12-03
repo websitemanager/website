@@ -29,7 +29,7 @@
           <div class="column about">
             <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">About</h6>
             <div class="content">
-              <p>This website was mainly built with <a class="logo vuejs" href="https://vuejs.org"> VueJS</a>
+              <p>This website is built using <a class="logo vuejs" href="https://vuejs.org"> VueJS</a>
               and <a class="logo bulma" href="https://bulma.io">Bulma</a>.</p>
               <p>Hosted on <a class="logo gitlab" href="https://gitlab.com">Gitlab</a> and
               <a class="logo netlify" href="https://www.netlify.com/">Netlify</a>.</p>
