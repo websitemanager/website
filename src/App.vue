@@ -77,42 +77,63 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "~bulmaswatch/cerulean/variables";
+@import "~bulmaswatch/cerulean/variables";
 
-  @import "~bulma/sass/utilities/_all";
-  @import "~bulma";
-  @import "~bulmaswatch/cerulean/overrides";
-  @import "~buefy/src/scss/buefy";
+@import "~bulma/sass/utilities/_all";
+@import "~bulma";
+@import "~bulmaswatch/cerulean/overrides";
+@import "~buefy/src/scss/buefy";
 
-  footer.footer .column.about {
-    a {
-      color: $text-light;
-      font-weight: $weight-bold;
+footer.footer .column.about {
+  a {
+    color: $text-light;
+    font-weight: $weight-bold;
 
-      &.logo::before {
-        background: no-repeat center/1em;
-        content: '';
-        width: 1em;
-        height: 1em;
-        display: inline-block;
-        margin-right: 2px;
-      }
+    &.logo::before {
+      background: no-repeat center/1em;
+      content: '';
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      margin-right: 2px;
+    }
 
-      &.vuejs::before {
-        background-image: url('./assets/vuejs-logo.svg');
-      }
+    &.vuejs::before {
+      background-image: url('./assets/vuejs-logo.svg');
+    }
 
-      &.bulma::before {
-        background-image: url('./assets/bulma-logo.svg')
-      }
+    &.bulma::before {
+      background-image: url('./assets/bulma-logo.svg')
+    }
 
-      &.gitlab::before {
-        background-image: url('./assets/gitlab-logo.svg')
-      }
+    &.gitlab::before {
+      background-image: url('./assets/gitlab-logo.svg')
+    }
 
-      &.netlify::before {
-        background-image: url('./assets/netlify-logo.svg')
-      }
+    &.netlify::before {
+      background-image: url('./assets/netlify-logo.svg')
     }
   }
+}
+
+@include mobile {
+  footer.footer {
+    .columns {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about {
+      order: 3;
+    }
+
+    .contact {
+      order: 2;
+    }
+
+    .social {
+      order: 1;
+    }
+  }
+}
 </style>
