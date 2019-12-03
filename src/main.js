@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Buefy from 'buefy';
+import VueScrollTo from 'vue-scrollto';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { faGitlab, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -15,6 +16,8 @@ Vue.use(Buefy, {
   defaultIconComponent: 'vue-fontawesome',
   defaultIconPack: 'fas',
 });
+
+Vue.use(VueScrollTo);
 
 Vue.config.productionTip = false;
 

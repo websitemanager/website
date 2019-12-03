@@ -9,10 +9,16 @@
       </template>
       <template slot="end">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
-        <b-navbar-item href="#">About</b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'.about'">
+          About
+        </b-navbar-item>
         <b-navbar-item href="https://blog.strict-panda.com">Blog</b-navbar-item>
-        <b-navbar-item href="#">Portfolio</b-navbar-item>
-        <b-navbar-item href="#">Contact</b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'.portfolio'">
+          Portfolio
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'.contact'">
+          Contact
+        </b-navbar-item>
       </template>
     </b-navbar>
 
