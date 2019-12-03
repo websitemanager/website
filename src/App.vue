@@ -9,14 +9,14 @@
       </template>
       <template slot="end">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'.about'">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'section.about'">
           About
         </b-navbar-item>
         <b-navbar-item href="https://blog.strict-panda.com">Blog</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'.portfolio'">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'section.portfolio'">
           Portfolio
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'.contact'">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'section.contact'">
           Contact
         </b-navbar-item>
       </template>
@@ -27,24 +27,26 @@
     <footer class="footer has-background-dark has-text-light">
       <div class="container">
         <div class="columns">
-          <div class="column">
+          <div class="column about">
             <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">About</h6>
             <div class="content">
-              <p>Web developer with background of <span class="has-text-weight-bold">PHP</span> and
-              <span class="has-text-weight-bold">Javascript</span>.</p>
+              <p>This website was mainly built with <a class="logo vuejs" href="https://vuejs.org"> VueJS</a>
+              and <a class="logo bulma" href="https://bulma.io">Bulma</a>.</p>
+              <p>Hosted on <a class="logo gitlab" href="https://gitlab.com">Gitlab</a> and
+              <a class="logo netlify" href="https://www.netlify.com/">Netlify</a>.</p>
               <p>Copyright &copy; Strict Panda {{ year }}.
               Images from <a href="https://www.freepik.com/home"
                              class="has-text-primary" target="_blank">Freepik</a>.</p>
             </div>
           </div>
-          <div class="column">
+          <div class="column contact">
             <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">Contact</h6>
             <div class="content">
               <p>Contact me at <a class="has-text-primary has-text-weight-bold"
                                   :href="'mailto:' + email">{{ email }}</a>.</p>
             </div>
           </div>
-          <div class="column">
+          <div class="column social">
             <h6 class="title is-6 has-text-light has-text-weight-bold is-uppercase">Follow me</h6>
             <nav class="level is-mobile">
               <div class="level-left">
@@ -76,18 +78,42 @@ export default {
 </script>
 
 <style lang="scss">
-  // @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700&display=swap');
-
-  // $family-sans-serif: 'Roboto', sans-serif;
-  // $title-family: 'Open Sans', sans-serif;
-  // $body-size: 18px;
-
   @import "~bulmaswatch/cerulean/variables";
 
-  // Import Bulma's core
   @import "~bulma/sass/utilities/_all";
-
   @import "~bulma";
   @import "~bulmaswatch/cerulean/overrides";
   @import "~buefy/src/scss/buefy";
+
+  footer.footer .column.about {
+    a {
+      color: $text-light;
+      font-weight: $weight-bold;
+
+      &.logo::before {
+        background: no-repeat center/1em;
+        content: '';
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        margin-right: 2px;
+      }
+
+      &.vuejs::before {
+        background-image: url('./assets/vuejs-logo.svg');
+      }
+
+      &.bulma::before {
+        background-image: url('./assets/bulma-logo.svg')
+      }
+
+      &.gitlab::before {
+        background-image: url('./assets/gitlab-logo.svg')
+      }
+
+      &.netlify::before {
+        background-image: url('./assets/netlify-logo.svg')
+      }
+    }
+  }
 </style>
