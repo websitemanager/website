@@ -1,10 +1,10 @@
 <template>
   <div class="skill">
-    <div v-if="loading" class="loading">
+    <div v-if="!skill" class="loading">
       <half-circle-spinner :animation-duration="1000" :size="30" color="#73A839" />
     </div>
 
-    <div v-if="!loading">
+    <div v-if="skill">
       <h6 class="skill-name title is-6">{{ skill.name }}</h6>
       <b-progress type="is-success" :value="skill.value * 10"
                   class="skill-value"></b-progress>
@@ -18,9 +18,8 @@
 </template>
 
 <script>
-import Airtable from 'airtable';
+import { mapActions } from 'vuex';
 import { HalfCircleSpinner } from 'epic-spinners';
-import api from '@/services/api';
 
 export default {
   name: 'Skill',
@@ -32,51 +31,22 @@ export default {
   },
   data() {
     return {
-      skill: {},
-      loading: true,
+      skill: null,
     };
   },
-  async mounted() {
-    const base = new Airtable({
-      endpointUrl: 'https://api.airtable.com',
-      apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
-    }).base(process.env.VUE_APP_AIRTABLE_SKILLS_BASE);
-
-    const getItem = async (id) => {
-      const table = base('Items');
-      const item = await api.getRecord(table, id);
-
-      return {
-        id: item.id,
-        name: item.Name,
-        link: item.Link,
-      };
-    };
-
-    const getSkillItems = async (id) => {
-      const table = base('Skills');
-      const record = await api.getRecord(table, id);
-
-      const skillItems = [];
-
-      // eslint-disable-next-line
-      for (const item of record.Items) {
-        // eslint-disable-next-line
-        const i = await getItem(item);
-        skillItems.push(i);
-      }
-
-      this.loading = false;
-
-      return {
-        id: record.id,
-        name: record.Name,
-        value: record.Value,
-        items: skillItems,
-      };
-    };
-
-    this.skill = await getSkillItems(this.id);
+  mounted() {
+    if (this.$store.getters.getSkill(this.id)) {
+      this.skill = this.$store.getters.getSkill(this.id);
+    } else {
+      this
+        .getSkillItems(this.id)
+        .then(() => { this.skill = this.$store.getters.getSkill(this.id); });
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getSkillItems',
+    ]),
   },
 };
 </script>
