@@ -18,12 +18,14 @@ export default new Vuex.Store({
   state: {
     skills: [],
     portfolio: [],
+    portfolioItem: {},
   },
   getters: {
     getItem: state => (type, id) => (
       state[type].find(item => item.id === id)
     ),
     getItems: state => type => (state[type]),
+    getPortfolioItem: state => () => (state.portfolioItem),
   },
   mutations: {
     addItem: (state, { type, item }) => {
@@ -32,6 +34,9 @@ export default new Vuex.Store({
     updateItem: (state, { type, item }) => {
       const key = state[type].find(i => i.id === item.id);
       Object.assign(key, item);
+    },
+    setPortfolioItem: (state, item) => {
+      state.portfolioItem = item;
     },
   },
   actions: {
@@ -103,10 +108,34 @@ export default new Vuex.Store({
           name: item.Name,
           link: item.Link,
           thumbnail: item.Thumbnail[0].url,
+          image: item.Image[0].url,
           description: item.Description ? marked(item.Description, { smartypants: true }) : '',
+          contributions: item.Contributions ? marked(item.Contributions, { smartypants: true }) : '',
           loaded: true,
         },
       });
+    },
+    getPortfolioDetails: async ({ commit, state }, itemID) => {
+      let item = state.portfolio.find(i => i.id === itemID);
+
+      // If the item is not yet available in the store then just include it.
+      if (!item) {
+        const table = portfolioBase('Items');
+        const details = await api.getRecord(table, itemID);
+
+        item = {
+          id: details.id,
+          name: details.Name,
+          link: details.Link,
+          thumbnail: details.Thumbnail[0].url,
+          image: details.Image[0].url,
+          description: details.Description ? marked(details.Description, { smartypants: true }) : '',
+          contributions: details.Contributions ? marked(details.Contributions, { smartypants: true }) : '',
+          loaded: true,
+        };
+      }
+
+      commit('setPortfolioItem', item);
     },
   },
 });
