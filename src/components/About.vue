@@ -28,8 +28,7 @@
 </template>
 
 <script>
-import Airtable from 'airtable';
-import api from '@/services/api';
+import { mapActions } from 'vuex';
 import Skill from '@/components/Skill.vue';
 
 export default {
@@ -42,20 +41,17 @@ export default {
       skills: [],
     };
   },
-  async mounted() {
-    const base = new Airtable({
-      endpointUrl: 'https://api.airtable.com',
-      apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
-    }).base(process.env.VUE_APP_AIRTABLE_SKILLS_BASE);
-
-    const getSkills = async () => {
-      const table = base('Skills');
-      const records = await api.getRecords(table);
-
-      return records.map(record => ({ id: record.getId() }));
-    };
-
-    this.skills = await getSkills();
+  methods: {
+    ...mapActions([
+      'getSkills',
+    ]),
+  },
+  mounted() {
+    if (!this.$store.getters.getSkills().length) {
+      this.getSkills().then(() => { this.skills = this.$store.getters.getSkills(); });
+    } else {
+      this.skills = this.$store.getters.getSkills();
+    }
   },
 };
 </script>

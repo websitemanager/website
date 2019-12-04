@@ -18,13 +18,29 @@ export default new Vuex.Store({
     getSkill: state => id => (
       state.skills.find(skill => skill.id === id)
     ),
+    getSkills: state => () => (state.skills),
   },
   mutations: {
     addSkill(state, skill) {
       state.skills.push(skill);
     },
+    updateSkill: (state, item) => {
+      const skill = state.skills.find(i => i.id === item.id);
+      Object.assign(skill, item);
+    },
   },
   actions: {
+    async getSkills({ commit }) {
+      const table = skillsBase('Skills');
+      const records = await api.getRecords(table);
+
+      records.forEach((record) => {
+        commit('addSkill', {
+          id: record.getId(),
+          loaded: false,
+        });
+      });
+    },
     async getSkillItems({ commit }, id) {
       const getItem = async (itemID) => {
         const table = skillsBase('Items');
@@ -49,11 +65,12 @@ export default new Vuex.Store({
         skillItems.push(i);
       }
 
-      commit('addSkill', {
+      commit('updateSkill', {
         id: record.id,
         name: record.Name,
         value: record.Value,
         items: skillItems,
+        loaded: true,
       });
     },
   },

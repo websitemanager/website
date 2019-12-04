@@ -1,10 +1,10 @@
 <template>
   <div class="skill">
-    <div v-if="!skill" class="loading">
+    <div v-if="!skill.loaded" class="loading">
       <half-circle-spinner :animation-duration="1000" :size="30" color="#73A839" />
     </div>
 
-    <div v-if="skill">
+    <div v-if="skill.loaded">
       <h6 class="skill-name title is-6">{{ skill.name }}</h6>
       <b-progress type="is-success" :value="skill.value * 10"
                   class="skill-value"></b-progress>
@@ -31,13 +31,13 @@ export default {
   },
   data() {
     return {
-      skill: null,
+      skill: { loaded: false },
     };
   },
   mounted() {
-    if (this.$store.getters.getSkill(this.id)) {
-      this.skill = this.$store.getters.getSkill(this.id);
-    } else {
+    this.skill = this.$store.getters.getSkill(this.id);
+
+    if (!this.skill.loaded) {
       this
         .getSkillItems(this.id)
         .then(() => { this.skill = this.$store.getters.getSkill(this.id); });
