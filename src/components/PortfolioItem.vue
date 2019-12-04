@@ -8,7 +8,7 @@
                  class="card is-block has-background-white">
       <div class="card-image">
         <figure class="image is-16by9">
-          <img :src="item.thumbnail" :alt="item.name" :title="item.name">
+          <img v-lazy="item.thumbnail" :alt="item.name" :title="item.name">
         </figure>
       </div>
       <div class="card-content">
@@ -64,6 +64,25 @@ export default {
 
     .half-circle-spinner {
       margin: 0 auto;
+    }
+  }
+}
+
+img[lazy='loaded'] {
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: ease-out;
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 }
