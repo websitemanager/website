@@ -35,12 +35,12 @@ export default {
     };
   },
   mounted() {
-    this.skill = this.$store.getters.getSkill(this.id);
+    this.skill = this.$store.getters.getItem('skills', this.id);
 
     if (!this.skill.loaded) {
       this
         .getSkillItems(this.id)
-        .then(() => { this.skill = this.$store.getters.getSkill(this.id); });
+        .then(() => { this.skill = this.$store.getters.getItem('skills', this.id); });
     }
   },
   methods: {

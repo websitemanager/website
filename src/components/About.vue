@@ -47,10 +47,10 @@ export default {
     ]),
   },
   mounted() {
-    if (!this.$store.getters.getSkills().length) {
-      this.getSkills().then(() => { this.skills = this.$store.getters.getSkills(); });
+    if (!this.$store.getters.getItems('skills').length) {
+      this.getSkills().then(() => { this.skills = this.$store.getters.getItems('skills'); });
     } else {
-      this.skills = this.$store.getters.getSkills();
+      this.skills = this.$store.getters.getItems('skills');
     }
   },
 };

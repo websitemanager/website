@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import Airtable from 'airtable';
-import api from '@/services/api';
+import { mapActions } from 'vuex';
 import PortfolioItem from '@/components/PortfolioItem.vue';
 
 export default {
@@ -27,20 +26,17 @@ export default {
       portfolioItems: [],
     };
   },
-  async mounted() {
-    const base = new Airtable({
-      endpointUrl: 'https://api.airtable.com',
-      apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
-    }).base(process.env.VUE_APP_AIRTABLE_PORTFOLIO_BASE);
-
-    const getPortfolio = async () => {
-      const table = base('Items');
-      const records = await api.getRecords(table);
-
-      return records.map(record => ({ id: record.getId() }));
-    };
-
-    this.portfolioItems = await getPortfolio();
+  methods: {
+    ...mapActions([
+      'getPortfolio',
+    ]),
+  },
+  mounted() {
+    if (!this.$store.getters.getItems('portfolio').length) {
+      this.getPortfolio().then(() => { this.portfolioItems = this.$store.getters.getItems('portfolio'); });
+    } else {
+      this.portfolioItems = this.$store.getters.getItems('portfolio');
+    }
   },
 };
 </script>

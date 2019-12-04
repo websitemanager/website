@@ -1,10 +1,10 @@
 <template>
   <div class="item">
-    <div v-if="loading" class="loading">
+    <div v-if="!item.loaded" class="loading">
       <half-circle-spinner :animation-duration="1000" :size="30" color="#73A839" />
     </div>
 
-    <router-link v-if="!loading" :to="{ name: 'portfolioItemDetail', params: { id: item.id } }"
+    <router-link v-if="item.loaded" :to="{ name: 'portfolioItemDetail', params: { id: item.id } }"
                  class="card is-block has-background-white">
       <div class="card-image">
         <figure class="image is-16by9">
@@ -20,10 +20,8 @@
 </template>
 
 <script>
-import Airtable from 'airtable';
-import marked from 'marked';
+import { mapActions } from 'vuex';
 import { HalfCircleSpinner } from 'epic-spinners';
-import api from '@/services/api';
 
 export default {
   name: 'PortfolioItem',
@@ -35,32 +33,22 @@ export default {
   },
   data() {
     return {
-      item: {},
-      loading: true,
+      item: { loaded: false },
     };
   },
-  async mounted() {
-    const base = new Airtable({
-      endpointUrl: 'https://api.airtable.com',
-      apiKey: process.env.VUE_APP_AIRTABLE_API_KEY,
-    }).base(process.env.VUE_APP_AIRTABLE_PORTFOLIO_BASE);
+  mounted() {
+    this.item = this.$store.getters.getItem('portfolio', this.id);
 
-    const getItem = async (id) => {
-      const table = base('Items');
-      const item = await api.getRecord(table, id);
-
-      this.loading = false;
-
-      return {
-        id: item.id,
-        name: item.Name,
-        link: item.Link,
-        thumbnail: item.Thumbnail[0].url,
-        description: item.Description ? marked(item.Description, { smartypants: true }) : '',
-      };
-    };
-
-    this.item = await getItem(this.id);
+    if (!this.item.loaded) {
+      this
+        .getPortfolioItem(this.id)
+        .then(() => { this.item = this.$store.getters.getItem('portfolio', this.id); });
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getPortfolioItem',
+    ]),
   },
 };
 </script>
