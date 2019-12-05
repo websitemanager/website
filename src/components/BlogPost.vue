@@ -37,7 +37,7 @@ export default {
   margin-bottom: 1em;
 
   img {
-    border-radius: 6px;
+    border-radius: 10px;
   }
 }
 </style>
