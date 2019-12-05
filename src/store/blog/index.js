@@ -24,7 +24,7 @@ export default {
           commit('addPost', post);
         });
       } catch (error) {
-        console.error(error);
+        // Don't do anything.
       }
     },
   },

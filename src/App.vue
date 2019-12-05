@@ -11,7 +11,9 @@
         <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'section.about'">
           About
         </b-navbar-item>
-        <b-navbar-item href="https://blog.strict-panda.com">Blog</b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'section.blog'">
+          Blog
+        </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/' }" v-scroll-to="'section.portfolio'">
           Portfolio
         </b-navbar-item>
