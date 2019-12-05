@@ -20,7 +20,7 @@
             <div v-if="item.contributions" class="content" v-html="item.contributions"></div>
             <b-button icon-left="external-link-alt"
                       type="is-success" tag="a" :href="item.link" target="_blank">
-              Visit site
+              Visit website
             </b-button>
           </div>
         </div>

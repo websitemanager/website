@@ -8,7 +8,7 @@
                  class="card is-block has-background-white">
       <div class="card-image">
         <figure class="image is-16by9">
-          <img v-lazy="item.thumbnail" :alt="item.name" :title="item.name">
+          <img v-lazy="item.thumbnail" :alt="item.name" :title="item.name" />
         </figure>
       </div>
       <div class="card-content">

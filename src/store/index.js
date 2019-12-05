@@ -3,6 +3,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import marked from 'marked';
 import api from '@/services/api';
+import blog from './blog';
 
 Vue.use(Vuex);
 
@@ -137,5 +138,8 @@ export default new Vuex.Store({
 
       commit('setPortfolioItem', item);
     },
+  },
+  modules: {
+    blog,
   },
 });
