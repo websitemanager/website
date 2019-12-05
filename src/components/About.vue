@@ -11,7 +11,8 @@
             other technologies not limiting to <strong>PHP</strong>. I mostly do <strong>backend
             development</strong> but I am also comfortable with <strong>frontend
           development</strong> and a little bit of <strong>devops</strong>.</p>
-            <p>I build websites from ground up and also do support for existing websites.</p>
+            <p>I build websites from ground up (as long at it has a design — I can't design) and
+            also do support for existing websites.</p>
             <p>My role mostly involves <strong>migration</strong>, <strong>consuming third-party
               APIs</strong>, <strong>developing custom modules and themes in Drupal</strong>,
             and <strong>site building and configuration</strong>.
