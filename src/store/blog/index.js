@@ -6,7 +6,7 @@ export default {
     posts: [],
   },
   getters: {
-    getPosts: state => () => (state.posts),
+    getPosts: state => (state.posts),
   },
   mutations: {
     addPost: (state, item) => {
@@ -14,7 +14,7 @@ export default {
     },
   },
   actions: {
-    getPosts: async ({ commit }) => {
+    fetchPosts: async ({ commit }) => {
       try {
         const response = await fetch(`${blogUrl}/post/index.json`);
         const body = await response.json();
