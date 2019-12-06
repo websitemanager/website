@@ -1,26 +1,28 @@
 <template>
   <div class="item">
-    <div v-if="!item.loaded" class="loading">
+    <div v-if="!getPortfolioItem.loaded" class="loading">
       <half-circle-spinner :animation-duration="1000" :size="30" color="#73A839" />
     </div>
 
-    <router-link v-if="item.loaded" :to="{ name: 'portfolioItemDetail', params: { id: item.id } }"
-                 class="card is-block has-background-white">
+    <router-link v-if="getPortfolioItem.loaded" :to="{ name: 'portfolioItemDetail', params: { id:
+                       getPortfolioItem.id } }" class="card is-block has-background-white">
       <div class="card-image">
         <figure class="image is-16by9">
-          <img v-lazy="item.thumbnail" :alt="item.name" :title="item.name" />
+          <img v-lazy="getPortfolioItem.thumbnail" :alt="getPortfolioItem.name"
+               :title="getPortfolioItem.name" />
         </figure>
       </div>
       <div class="card-content">
-        <h5 class="title is-5">{{ item.name }}</h5>
-        <div class="content" v-if="item.description" v-html="item.description" />
+        <h5 class="title is-5">{{ getPortfolioItem.name }}</h5>
+        <div class="content" v-if="getPortfolioItem.description"
+                             v-html="getPortfolioItem.description" />
       </div>
     </router-link>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { HalfCircleSpinner } from 'epic-spinners';
 
 export default {
@@ -31,23 +33,20 @@ export default {
   components: {
     HalfCircleSpinner,
   },
-  data() {
-    return {
-      item: { loaded: false },
-    };
+  computed: {
+    ...mapGetters('airtable', [
+      'getItem',
+    ]),
+    getPortfolioItem() {
+      return this.getItem('portfolio', this.id);
+    },
   },
   mounted() {
-    this.item = this.$store.getters.getItem('portfolio', this.id);
-
-    if (!this.item.loaded) {
-      this
-        .getPortfolioItem(this.id)
-        .then(() => { this.item = this.$store.getters.getItem('portfolio', this.id); });
-    }
+    this.fetchPortfolioItem(this.id);
   },
   methods: {
-    ...mapActions([
-      'getPortfolioItem',
+    ...mapActions('airtable', [
+      'fetchPortfolioItem',
     ]),
   },
 };

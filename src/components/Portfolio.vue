@@ -5,7 +5,7 @@
       <h4 class="subtitle is-4 has-text-centered">A collection of some of the websites I was lucky
         enough to contribute to.</h4>
       <div class="columns collection is-multiline">
-        <PortfolioItem v-for="item in portfolioItems" :key="item.id" :id="item.id" class="item
+        <PortfolioItem v-for="item in getPortfolioItems" :key="item.id" :id="item.id" class="item
                               is-one-third column" />
       </div>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import PortfolioItem from '@/components/PortfolioItem.vue';
 
 export default {
@@ -21,22 +21,21 @@ export default {
   components: {
     PortfolioItem,
   },
-  data() {
-    return {
-      portfolioItems: [],
-    };
+  computed: {
+    ...mapGetters('airtable', [
+      'getItems',
+    ]),
+    getPortfolioItems() {
+      return this.getItems('portfolio');
+    },
   },
   methods: {
-    ...mapActions([
-      'getPortfolio',
+    ...mapActions('airtable', [
+      'fetchPortfolio',
     ]),
   },
   mounted() {
-    if (!this.$store.getters.getItems('portfolio').length) {
-      this.getPortfolio().then(() => { this.portfolioItems = this.$store.getters.getItems('portfolio'); });
-    } else {
-      this.portfolioItems = this.$store.getters.getItems('portfolio');
-    }
+    this.fetchPortfolio();
   },
 };
 </script>
