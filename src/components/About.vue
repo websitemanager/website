@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="column is-5 is-offset-1">
-          <Skill v-for="skill in skills" :key="skill.id" :id="skill.id" />
+          <Skill v-for="skill in getSkills" :key="skill.id" :id="skill.id" />
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import Skill from '@/components/Skill.vue';
 
 export default {
@@ -36,22 +36,21 @@ export default {
   components: {
     Skill,
   },
-  data() {
-    return {
-      skills: [],
-    };
+  computed: {
+    ...mapGetters('airtable', [
+      'getItems',
+    ]),
+    getSkills() {
+      return this.getItems('skills');
+    },
   },
   methods: {
-    ...mapActions([
-      'getSkills',
+    ...mapActions('airtable', [
+      'fetchSkills',
     ]),
   },
   mounted() {
-    if (!this.$store.getters.getItems('skills').length) {
-      this.getSkills().then(() => { this.skills = this.$store.getters.getItems('skills'); });
-    } else {
-      this.skills = this.$store.getters.getItems('skills');
-    }
+    this.fetchSkills();
   },
 };
 </script>

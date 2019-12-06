@@ -5,7 +5,7 @@
       <h4 class="subtitle is-4 has-text-centered">A collection of some of the websites I was lucky
         enough to contribute to.</h4>
       <div class="columns collection is-multiline">
-        <PortfolioItem v-for="item in getPortfolioItems" :key="item.id" :id="item.id" class="item
+        <PortfolioItem v-for="item in getPortfolio" :key="item.id" :id="item.id" class="item
                               is-one-third column" />
       </div>
     </div>
@@ -25,7 +25,7 @@ export default {
     ...mapGetters('airtable', [
       'getItems',
     ]),
-    getPortfolioItems() {
+    getPortfolio() {
       return this.getItems('portfolio');
     },
   },

@@ -37,7 +37,11 @@ export default {
     },
   },
   actions: {
-    fetchSkills: async ({ commit }) => {
+    fetchSkills: async ({ commit, getters }) => {
+      if (getters.getItems('skills').length > 0) {
+        return;
+      }
+
       const table = skillsBase('Skills');
       const records = await api.getRecords(table);
 
@@ -48,7 +52,11 @@ export default {
         });
       });
     },
-    fetchSkillItems: async ({ commit }, id) => {
+    fetchSkillItems: async ({ commit, getters }, id) => {
+      if (getters.getItem('skills', id).loaded) {
+        return;
+      }
+
       const getItem = async (itemID) => {
         const table = skillsBase('Items');
         const item = await api.getRecord(table, itemID);
