@@ -14,7 +14,11 @@ export default {
     },
   },
   actions: {
-    fetchPosts: async ({ commit }) => {
+    fetchPosts: async ({ commit, getters }) => {
+      if (getters.getPosts.length > 0) {
+        return;
+      }
+
       try {
         const response = await fetch(`${blogUrl}/post/index.json`);
         const body = await response.json();
