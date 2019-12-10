@@ -22,7 +22,7 @@ export default {
       state[type].find(item => item.id === id) || { loaded: false }
     ),
     getItems: state => type => (state[type]),
-    getPortfolioItem: state => () => (state.portfolioItem),
+    getPortfolioItem: state => (state.portfolioItem),
   },
   mutations: {
     addItem: (state, { type, item }) => {
@@ -131,7 +131,9 @@ export default {
     fetchPortfolioDetails: async ({ commit, state }, itemID) => {
       let item = state.portfolio.find(i => i.id === itemID);
 
-      // If the item is not yet available in the store then just include it.
+      commit('setPortfolioItem', { loaded: false });
+
+      // If the item is not yet available in the store then just set it.
       if (!item) {
         const table = portfolioBase('Items');
         const details = await api.getRecord(table, itemID);
