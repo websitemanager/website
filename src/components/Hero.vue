@@ -1,5 +1,5 @@
 <template>
-  <section class="header hero">
+  <section class="header hero is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container">
         <div class="columns">
