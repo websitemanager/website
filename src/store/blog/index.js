@@ -20,7 +20,7 @@ export default {
       }
 
       try {
-        const response = await fetch(`${blogUrl}/post/index.json`);
+        const response = await fetch(`${blogUrl}/index.json`);
         const body = await response.json();
         const posts = body.data.items;
 
