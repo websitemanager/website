@@ -22,7 +22,7 @@ export default {
       try {
         const response = await fetch(`${blogUrl}/index.json`);
         const body = await response.json();
-        const posts = body.data.items;
+        const posts = body.items;
 
         posts.slice(0, 3).forEach((post) => {
           commit('addPost', post);
