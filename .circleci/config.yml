@@ -3,7 +3,7 @@ orbs:
 version: 2.1
 
 jobs:
-  deploy:
+  build:
     executor:
       name: node/default
       tag: '13.1.0'
@@ -12,13 +12,29 @@ jobs:
       - node/with-cache:
           steps:
             - run: yarn install
-            - run: sudo npm i -g netlify-cli
       - run: yarn build
-      - run: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --message "Deploy via Circle CI."
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+            - netlify.toml
+  deploy:
+    executor:
+      name: node/default
+      tag: '13.1.0'
+    working_directory: ~/site
+    steps:
+      - attach_workspace:
+          at: ~/site
+      - node/with-cache:
+          steps:
+            - run: npm i netlify-cli
+      - run: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --message "Deploy via Circle CI."
 
 workflows:
   main:
     jobs:
+      - build
       - deploy:
           filters:
             branches:
