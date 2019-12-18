@@ -1,5 +1,7 @@
 # website
 
+![CircleCI](https://img.shields.io/circleci/build/github/puresyntax71/website)
+
 ## Project setup
 ```
 yarn install
