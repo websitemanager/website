@@ -26,9 +26,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/site
-      - node/with-cache:
-          steps:
-            - run: npm i netlify-cli
+      - run: npm i netlify-cli
       - run: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --message "Deploy via Circle CI."
 
 workflows:
