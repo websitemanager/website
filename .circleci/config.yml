@@ -14,7 +14,7 @@ jobs:
             - run: yarn install
             - run: sudo npm i -g netlify-cli
       - run: yarn build
-      - run: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --message "Deploy via Circle CI."
+      - run: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod --message "Deploy via Circle CI."
 
 workflows:
   main:
