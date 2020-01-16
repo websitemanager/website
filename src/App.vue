@@ -54,8 +54,8 @@
                 <a href="https://gitlab.com/virtualcursor" class="has-text-light level-item">
                   <b-icon pack="fab" icon="gitlab"></b-icon>
                 </a>
-                <a href="#" class="has-text-light level-item">
-                  <b-icon pack="fab" icon="instagram"></b-icon>
+                <a href="https://github.com/puresyntax71" class="has-text-light level-item">
+                  <b-icon pack="fab" icon="github"></b-icon>
                 </a>
               </div>
             </nav>
