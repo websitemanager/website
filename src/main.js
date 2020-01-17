@@ -4,14 +4,19 @@ import VueLazyload from 'vue-lazyload';
 import VueScrollTo from 'vue-scrollto';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { faGitlab, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faGitlab,
+  faInstagram,
+  faGithub,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import router from './router';
 import App from './App.vue';
 import store from './store';
 
-library.add(faExternalLinkAlt, faGitlab, faInstagram, faGithub);
+library.add(faExternalLinkAlt, faGitlab, faInstagram, faGithub, faTwitter);
 
 Vue.component('vue-fontawesome', FontAwesomeIcon);
 

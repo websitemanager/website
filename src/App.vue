@@ -33,7 +33,7 @@
             <div class="content">
               <p>This website is built using <a class="logo vuejs" href="https://vuejs.org"> VueJS</a>
               and <a class="logo bulma" href="https://bulma.io">Bulma</a>.</p>
-              <p>Hosted on <a class="logo gitlab" href="https://gitlab.com">Gitlab</a> and
+              <p>Hosted on <a class="logo github" href="https://github.com">Gitlab</a> and
               <a class="logo netlify" href="https://www.netlify.com/">Netlify</a>.</p>
               <p>Copyright &copy; Strict Panda {{ year }}.
               Images from <a href="https://www.freepik.com/home"
@@ -56,6 +56,9 @@
                 </a>
                 <a href="https://github.com/puresyntax71" class="has-text-light level-item">
                   <b-icon pack="fab" icon="github"></b-icon>
+                </a>
+                <a href="https://twitter.com/atmywitsend4" class="has-text-light level-item">
+                  <b-icon pack="fab" icon="twitter"></b-icon>
                 </a>
               </div>
             </nav>
@@ -114,8 +117,8 @@ footer.footer .column.about {
       background-image: url('./assets/bulma-logo.svg')
     }
 
-    &.gitlab::before {
-      background-image: url('./assets/gitlab-logo.svg')
+    &.github::before {
+      background-image: url('./assets/github-icon.svg')
     }
 
     &.netlify::before {
