@@ -15,7 +15,7 @@
     "airtable": "^0.8.1",
     "buefy": "^0.8.8",
     "bulmaswatch": "^0.7.5",
-    "core-js": "^3.4.3",
+    "core-js": "^3.6.5",
     "epic-spinners": "^1.1.0",
     "marked": "^0.8.2",
     "vue": "^2.6.10",
